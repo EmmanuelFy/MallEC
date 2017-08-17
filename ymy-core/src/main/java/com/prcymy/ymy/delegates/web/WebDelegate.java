@@ -23,6 +23,8 @@ public abstract class WebDelegate extends MallDelegate implements IWebViewInitia
     //
     private boolean mIsWebviewAbailable = false;
 
+    private MallDelegate mTopDelegate = null;
+
     public WebDelegate() {
 
     }
@@ -34,6 +36,7 @@ public abstract class WebDelegate extends MallDelegate implements IWebViewInitia
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
         mUrl = args.getString(RouteKeys.URL.name());
+        initWebview();
     }
 
     @SuppressLint("JavascriptInterface")
@@ -60,6 +63,18 @@ public abstract class WebDelegate extends MallDelegate implements IWebViewInitia
 
 
         }
+    }
+
+    public void setTopDelegate(MallDelegate delegate){
+        mTopDelegate = delegate;
+    }
+
+    public MallDelegate getTopDelegate(){
+        if (mTopDelegate == null){
+            mTopDelegate = this;
+        }
+
+        return mTopDelegate;
     }
 
     public WebView getWebView() {

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.delegates.web.WebDelegate;
@@ -35,6 +36,8 @@ public class Router {
             callPhone(delegate.getContext(), url);
             return true;
         }
+        //必须从第一个加载,才会是全屏
+        //final MallDelegate topdelegate = delegate.getTopDelegate();
         final MallDelegate parentDelegate = delegate.getParentDelegate();
         final WebDelegateImpl webDelegate = WebDelegateImpl.create(url);
         if (parentDelegate == null) {
@@ -47,8 +50,10 @@ public class Router {
     }
 
 
+
     private void loadWebPage(WebView webView, String url) {
         if (webView != null) {
+            webView.setWebViewClient(new WebViewClient());
             webView.loadUrl(url);
         } else {
             throw new NullPointerException("WwebView is null");

@@ -1,7 +1,9 @@
 package com.prcymy.ymy.delegates.web;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -45,10 +47,9 @@ public class WebDelegateImpl extends WebDelegate {
     public IWebViewInitializer setInitializer() {
         return this;
     }
-
     @Override
     public WebView initWebView(WebView webView) {
-        return null;
+        return new WebViewInitializer().creatWebView(webView);
     }
 
     @Override

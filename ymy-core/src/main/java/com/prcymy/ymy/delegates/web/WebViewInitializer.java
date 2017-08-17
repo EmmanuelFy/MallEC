@@ -36,12 +36,27 @@ public class WebViewInitializer {
 
         //初始化WebSettings
         final WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
         final String ua = settings.getUserAgentString();
         settings.setUserAgentString(ua + "mall");
 
         //隐藏缩放控件
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
+
+        //屏蔽缩放
+        settings.setSupportZoom(false);
+
+        //文件权限
+        settings.setAllowFileAccess(true);
+        settings.setAllowFileAccessFromFileURLs(true);
+        settings.setAllowUniversalAccessFromFileURLs(true);
+
+        //缓存相关
+        settings.setAppCacheEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setDatabaseEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
         return webView;
     }

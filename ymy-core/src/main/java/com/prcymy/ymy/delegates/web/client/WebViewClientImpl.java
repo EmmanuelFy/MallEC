@@ -19,7 +19,6 @@ public class WebViewClientImpl extends WebViewClient {
         this.DELEGATE = DELEGATE;
     }
 
-
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
 

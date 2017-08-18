@@ -11,5 +11,7 @@ public enum ConfigType {
     APPLICATON_CONTEXT, //全局上下文
     CONFIG_READY, //初始化,配置是否完成
     ICON,
-    HANDLER
+    HANDLER,
+    JAVASCRIPT_INTERFACE,
+    WEB_HOST
 }

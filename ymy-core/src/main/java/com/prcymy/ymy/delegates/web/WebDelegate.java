@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.webkit.WebView;
 
+import com.prcymy.ymy.app.ConfigType;
+import com.prcymy.ymy.app.Mall;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.delegates.web.route.RouteKeys;
 
@@ -54,8 +56,8 @@ public abstract class WebDelegate extends MallDelegate implements IWebViewInitia
                 mWebView = initializer.initWebView(mWebView);
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());
-
-                mWebView.addJavascriptInterface(MallWebInterface.create(this), "mall");
+                final String name = Mall.getConfiguration(ConfigType.JAVASCRIPT_INTERFACE);
+                mWebView.addJavascriptInterface(MallWebInterface.create(this), name);
                 mIsWebviewAbailable = true;
             } else {
                 throw new NullPointerException("Initializer is null");

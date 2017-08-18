@@ -1,7 +1,9 @@
-package com.prcymy.ymy.delegates.web.event;
+package com.prcymy.mall.event;
 
 import android.util.Log;
 import android.widget.Toast;
+
+import com.prcymy.ymy.delegates.web.event.Event;
 
 /**
  * Created by Administrator on 2017/8/17.

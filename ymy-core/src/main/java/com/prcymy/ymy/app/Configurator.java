@@ -1,7 +1,11 @@
 package com.prcymy.ymy.app;
 
+import android.support.annotation.NonNull;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.prcymy.ymy.delegates.web.event.Event;
+import com.prcymy.ymy.delegates.web.event.EventManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,6 +77,25 @@ public class Configurator {
         return this;
     }
 
+    //初始化javascript
+    public Configurator withJavascriptInterface(@NonNull String name){
+        MALL_CONFIGS.put(ConfigType.JAVASCRIPT_INTERFACE,name);
+        return this;
+    }
+
+    //初始化event
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event){
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name,event);
+        return this;
+    }
+
+    //初始化cookie
+    public Configurator withWebHost(String webHost){
+        MALL_CONFIGS.put(ConfigType.WEB_HOST,webHost);
+        return this;
+    }
+
     //检测初始化是否完成
     private void checkConfiguration() {
         final boolean isReady = (boolean) MALL_CONFIGS.get(ConfigType.CONFIG_READY);
@@ -83,7 +106,7 @@ public class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfigurtions(Object key) {
+    final <T> T getConfigurtion(Object key) {
         checkConfiguration();
         return (T) MALL_CONFIGS.get(key);
     }

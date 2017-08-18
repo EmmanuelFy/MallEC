@@ -27,6 +27,15 @@ public final class Mall {
         return Configurator.getInstance().getMallConfig();
     }
 
+    //获取单列对象
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+
+    //返回值
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfigurtion(key);
+    }
 
     public static Context getApplicationContext() {
         return (Context) getConfigurations().get(ConfigType.APPLICATON_CONTEXT);

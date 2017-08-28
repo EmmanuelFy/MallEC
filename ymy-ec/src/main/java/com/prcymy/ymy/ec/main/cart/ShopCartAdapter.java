@@ -38,6 +38,10 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
         //初始化总价
         for (MultipleltemEntity entity : data) {
+
+            //可以判断选中状态  进行价格总计
+            //boolean field = entity.getField(ShopCartItemFields.IS_SELECTED);
+
             final double price = entity.getField(ShopCartItemFields.PRICE);
             final int count = entity.getField(ShopCartItemFields.COUNT);
             final double total = price * count;

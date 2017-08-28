@@ -31,7 +31,7 @@ import butterknife.OnClick;
  */
 
 public class ShopCartDelegate extends BottomItemDelegate
-        implements ISuccess,ICartItemListener {
+        implements ISuccess, ICartItemListener {
 
     private ShopCartAdapter mAdapter = null;
 
@@ -47,36 +47,28 @@ public class ShopCartDelegate extends BottomItemDelegate
     @BindView(R2.id.iv_shaop_cart)
     RecyclerView recyclerView = null;
 
-    //数量减少
-    /*@BindView(R2.id.icon_item_minus)
-    IconTextView minus = null;*/
-
-
-    /*//数量加
-    @BindView(R2.id.icon_item_plus)
-    IconTextView plus = null;*/
 
     @BindView(R2.id.icon_shop_cart_selcet_all)
     IconTextView mIconSelectedAll = null;
 
     //全选
     @OnClick(R2.id.icon_shop_cart_selcet_all)
-    void onClickAll(){
-      final int tag = (int) mIconSelectedAll.getTag();
-        if (tag == 0){
-            mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(),R.color.false_selected));
+    void onClickAll() {
+        final int tag = (int) mIconSelectedAll.getTag();
+        if (tag == 0) {
+            mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
             mIconSelectedAll.setTag(1);
             mAdapter.setIsSelectedAll(true);
 
             //更新view的显示状态
-            mAdapter.notifyItemRangeChanged(0,mAdapter.getItemCount());
-        }else {
-            mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(),R.color.app_main));
+            mAdapter.notifyItemRangeChanged(0, mAdapter.getItemCount());
+        } else {
+            mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.app_main));
             mIconSelectedAll.setTag(0);
             mAdapter.setIsSelectedAll(false);
 
             //更新view的显示状态
-            mAdapter.notifyItemRangeChanged(0,mAdapter.getItemCount());
+            mAdapter.notifyItemRangeChanged(0, mAdapter.getItemCount());
         }
     }
 
@@ -86,9 +78,10 @@ public class ShopCartDelegate extends BottomItemDelegate
 
     @BindView(R2.id.tv_shop_cart_pay)
     AppCompatTextView payTv = null;
+
     @OnClick(R2.id.tv_shop_cart_pay)
-    void payOnClick(){
-        Log.i("---------","结算");
+    void payOnClick() {
+        Log.i("---------", "结算");
     }
 
     //移入收藏
@@ -112,29 +105,29 @@ public class ShopCartDelegate extends BottomItemDelegate
         //要删除的数据
         List<MultipleltemEntity> deleteEnties = new ArrayList<>();
 
-        for (MultipleltemEntity entity : data){
+        for (MultipleltemEntity entity : data) {
             final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
-            if (isSelected){
+            if (isSelected) {
                 deleteEnties.add(entity);
             }
         }
 
-        for (MultipleltemEntity entity: deleteEnties){
+        for (MultipleltemEntity entity : deleteEnties) {
             int removePosition;
             final int entityPosition = entity.getField(ShopCartItemFields.POSITION);
-            if (entityPosition > mCurrentCount -1){
+            if (entityPosition > mCurrentCount - 1) {
                 removePosition = entityPosition - (mTotalCount - mCurrentCount);
 
-            }else {
+            } else {
                 removePosition = entityPosition;
             }
 
-            if (removePosition <= mAdapter.getItemCount()){
+            if (removePosition <= mAdapter.getItemCount()) {
                 mAdapter.remove(entityPosition);
                 mCurrentCount = mAdapter.getItemCount();
 
                 //更新数据
-                mAdapter.notifyItemRangeChanged(removePosition,mAdapter.getItemCount());
+                mAdapter.notifyItemRangeChanged(removePosition, mAdapter.getItemCount());
             }
 
         }
@@ -154,10 +147,6 @@ public class ShopCartDelegate extends BottomItemDelegate
             selectTv.setVisibility(View.VISIBLE);
             deleteTv.setVisibility(View.VISIBLE);
 
-            //数量
-           /* minus.setVisibility(View.VISIBLE);
-            plus.setVisibility(View.VISIBLE);*/
-
         } else {
             //赋值位true
             isCheck = true;
@@ -165,9 +154,6 @@ public class ShopCartDelegate extends BottomItemDelegate
             selectTv.setVisibility(View.GONE);
             deleteTv.setVisibility(View.GONE);
 
-            //数量
-          /*  minus.setVisibility(View.GONE);
-            plus.setVisibility(View.GONE);*/
         }
     }
 
@@ -177,11 +163,11 @@ public class ShopCartDelegate extends BottomItemDelegate
     @BindView(R2.id.tv_shop_cart_total_price)
     AppCompatTextView total = null;
 
-    private  void checkItemCount(){
-        final  int count = mAdapter.getItemCount();
-        if (count == 0){
-            final  View stubView = mStub.inflate();
-            final  AppCompatTextView tvToBuy = (AppCompatTextView) stubView.findViewById(R.id.stub_no_item);
+    private void checkItemCount() {
+        final int count = mAdapter.getItemCount();
+        if (count == 0) {
+            final View stubView = mStub.inflate();
+            final AppCompatTextView tvToBuy = (AppCompatTextView) stubView.findViewById(R.id.stub_no_item);
             tvToBuy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -194,7 +180,7 @@ public class ShopCartDelegate extends BottomItemDelegate
 
             recyclerView.setVisibility(View.GONE);
 
-        }else {
+        } else {
 
             recyclerView.setVisibility(View.VISIBLE);
         }

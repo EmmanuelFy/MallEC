@@ -18,6 +18,7 @@ public class IndexDataConverter extends DataConverter {
     @Override
     public ArrayList<MultipleltemEntity> convert() {
 
+        //JSONObject.toJavaObject()
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
         final int size = dataArray.size();
 

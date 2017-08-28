@@ -1,5 +1,6 @@
 package com.prcymy.ymy.ec.main.index;
 
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -26,8 +27,11 @@ public class IndexItemClickListener extends SimpleClickListener{
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
+
+
         final GoodsDetailDelegate detailDelegate = GoodsDetailDelegate.creat();
         DELEGATE.start(detailDelegate);
+        Log.i("----------",view.getId()+"======"+position);
 
     }
 

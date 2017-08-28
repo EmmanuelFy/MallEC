@@ -8,7 +8,7 @@ import com.prcymy.ymy.activitys.ProxActivity;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.launcher.ILauncherListener;
 import com.prcymy.ymy.ec.launcher.OnLauncherFinishTag;
-import com.prcymy.ymy.ec.main.EcBottomDelegate;
+import com.prcymy.ymy.ec.main.TestDelegate;
 import com.prcymy.ymy.ec.sign.ISignListener;
 import com.prcymy.ymy.utils.StartBar;
 
@@ -32,7 +32,7 @@ public class MainActivity extends ProxActivity implements
 
     @Override
     public MallDelegate setRootDelegate() {
-        return new EcBottomDelegate();
+        return new TestDelegate();
     }
 
     @Override
@@ -52,8 +52,10 @@ public class MainActivity extends ProxActivity implements
         switch (tag) {
             case SIGNED:
 
+
                 break;
             case NOT_SIGNED:
+
 
                 break;
         }

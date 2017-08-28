@@ -40,6 +40,8 @@ public class ShopCartDataConverter extends DataConverter {
                     .setIField(ShopCartItemFields.DESC,desc)
                     .setIField(ShopCartItemFields.COUNT,count)
                     .setIField(ShopCartItemFields.PRICE,price)
+                    .setIField(ShopCartItemFields.IS_SELECTED,false)
+                    .setIField(ShopCartItemFields.POSITION,i)
                     .build();
 
             dataList.add(entity);

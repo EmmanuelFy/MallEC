@@ -6,8 +6,8 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/app_main"
+        android:layout_height="73dp"
+        android:background="@color/colorWhit"
         android:gravity="center">
 
         <android.support.v7.widget.AppCompatTextView
@@ -16,9 +16,14 @@
             android:gravity="center"
             android:paddingTop="6dp"
             android:text="发现"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="13sp" />
     </android.support.v7.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e2e2e2"/>
 
     <android.support.v7.widget.ContentFrameLayout
         android:id="@+id/web_discover_contianer"

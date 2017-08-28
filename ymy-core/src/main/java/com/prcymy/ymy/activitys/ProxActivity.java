@@ -34,6 +34,7 @@ public abstract class ProxActivity extends SupportActivity {
         }
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

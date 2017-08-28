@@ -7,9 +7,8 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/app_main"
-        android:gravity="center">
+        android:layout_height="73dp"
+        android:background="@color/colorWhit">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -17,26 +16,38 @@
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="购物车"
-                android:textColor="@color/text_color_white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"/>
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_top_shop_cart_edit"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:text="编辑"
-                android:textColor="@color/text_color_white" />
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"/>
+
+
 
         </RelativeLayout>
 
+
+
     </android.support.v7.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/iv_shaop_cart"
@@ -47,12 +58,14 @@
     </android.support.v7.widget.RecyclerView>
 
     <android.support.v7.widget.ViewStubCompat
+        android:id="@+id/stub_no_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="8"
         android:background="@color/colorWhit"
         android:minHeight="50dp"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:layout="@layout/stub_shop_cart_no_item"/>
 
     <View
         android:layout_width="match_parent"
@@ -121,6 +134,7 @@
                 android:textColor="@color/app_main" />
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_shop_cart_total_price"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

@@ -15,7 +15,7 @@
             android:id="@+id/tb_index"
             android:layout_width="match_parent"
             android:layout_height="73dp"
-            android:background="#eb4343"
+            android:background="@color/colorWhit"
             app:layout_behavior="com.prcymy.ymy.ec.main.index.TransIuncentBeahavior">
 
                 <RelativeLayout
@@ -59,6 +59,12 @@
 
                 </RelativeLayout>
         </android.support.v7.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e2e2e2"/>
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/srl_index"
             android:layout_width="match_parent"

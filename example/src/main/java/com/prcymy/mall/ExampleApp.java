@@ -17,9 +17,9 @@ public class ExampleApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+                                        //http://192.168.8.178:8080/RestServer/data/
         Mall.init(this)
-                .withApiHost("http://192.168.8.178:8080/RestServer/data/")
+                .withApiHost("http://www.ydmgx.com/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModel())
                 .withJavascriptInterface("mall")

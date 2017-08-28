@@ -38,6 +38,7 @@ public class RestCreator {
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+
     }
 
     //设置超时时间

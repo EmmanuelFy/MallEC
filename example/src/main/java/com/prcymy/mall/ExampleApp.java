@@ -19,7 +19,7 @@ public class ExampleApp extends Application {
         super.onCreate();
                                         //http://192.168.8.178:8080/RestServer/data/
         Mall.init(this)
-                .withApiHost("http://www.ydmgx.com/")
+                .withApiHost("http://192.168.8.178:8080/RestServer/data/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModel())
                 .withJavascriptInterface("mall")

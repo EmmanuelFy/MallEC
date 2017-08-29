@@ -29,6 +29,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
     private ICartItemListener mICartItemListener = null;
 
     private double mTotalPrice = 0.00;
+    private IconTextView iconSelected;
 
     protected ShopCartAdapter(List<MultipleltemEntity> data) {
         super(data);
@@ -40,13 +41,16 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
         for (MultipleltemEntity entity : data) {
 
             //可以判断选中状态  进行价格总计
-            //boolean field = entity.getField(ShopCartItemFields.IS_SELECTED);
+            final boolean field = entity.getField(ShopCartItemFields.IS_SELECTED);
+            if (field){
+                final double price = entity.getField(ShopCartItemFields.PRICE);
+                final int count = entity.getField(ShopCartItemFields.COUNT);
+                final double total = price * count;
 
-            final double price = entity.getField(ShopCartItemFields.PRICE);
-            final int count = entity.getField(ShopCartItemFields.COUNT);
-            final double total = price * count;
+                mTotalPrice = mTotalPrice + total;
+                mICartItemListener.onItemClick(mTotalPrice);
+            }
 
-            mTotalPrice = mTotalPrice + total;
         }
     }
 
@@ -55,14 +59,15 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
         this.mIsSelectedAll = isSelectedAll;
     }
 
-    public void setICartItemListener(ICartItemListener listener) {
-        this.mICartItemListener = listener;
+    public void setICartItemListener(ICartItemListener mICartItemListener) {
+        this.mICartItemListener = mICartItemListener;
     }
 
     //
     public double getTotalPrice(){
         return mTotalPrice;
     }
+
 
     @Override
     protected void convert(MultipleViewHolder holder, final MultipleltemEntity entity) {
@@ -77,6 +82,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 final double price = entity.getField(ShopCartItemFields.PRICE);
                 final int count = entity.getField(ShopCartItemFields.COUNT);
                 final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
+
                 //取出控件
                 final AppCompatImageView thumbImageView = holder.getView(R.id.image_item_shop_cart);
                 final AppCompatTextView mTitle = holder.getView(R.id.tv_item_shop_cart_title);
@@ -96,13 +102,14 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
                 //zai左侧勾勾渲染之前改变全选与否状态
                 entity.setField(ShopCartItemFields.IS_SELECTED, mIsSelectedAll);
-                final IconTextView iconSelected = holder.getView(R.id.icon_item_shop_cart);
+                iconSelected = holder.getView(R.id.icon_item_shop_cart);
 
                 if (isSelected) {
                     iconSelected.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.app_main));
                 } else {
                     iconSelected.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
                 }
+
 
                 iconSelected.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -126,7 +133,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                         if (Integer.parseInt(mCount.getText().toString()) > 1) {
                             //告诉服务器需要减少数量
                             RestClient.builder()
-                                    .url("")
+                                    .url("shop_cart_data.json")
                                     .params("count", currentCount)
                                     .success(new ISuccess() {
                                         @Override
@@ -157,7 +164,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                         final int currentCount = entity.getField(ShopCartItemFields.COUNT);
                         //告诉服务器需要增加数量
                         RestClient.builder()
-                                .url("")
+                                .url("shop_cart_data.json")
                                 .params("count", currentCount)
                                 .success(new ISuccess() {
                                     @Override
@@ -186,5 +193,9 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 break;
         }
 
+    }
+
+    public void setIcon(){
+        iconSelected.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
     }
 }

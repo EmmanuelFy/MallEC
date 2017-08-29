@@ -15,6 +15,7 @@ import com.prcymy.ymy.net.RestClient;
 import com.prcymy.ymy.net.callback.IError;
 import com.prcymy.ymy.net.callback.IFail;
 import com.prcymy.ymy.net.callback.ISuccess;
+import com.prcymy.ymy.utils.Http;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,8 +53,8 @@ public class SignUpDelegate extends MallDelegate {
     void onClickSignUp(){
         if (checkForm()){
             RestClient.builder()
-                    .url("")
-                    .params("","")
+                    .url(Http.REGISTER_SEND_PHONE)
+                    .params("mobile","")
                     .success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {

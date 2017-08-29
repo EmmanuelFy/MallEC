@@ -147,12 +147,26 @@ public class ShopCartDelegate extends BottomItemDelegate
             selectTv.setVisibility(View.VISIBLE);
             deleteTv.setVisibility(View.VISIBLE);
 
+            final List<MultipleltemEntity> entities = mAdapter.getData();
+            for (MultipleltemEntity sel: entities) {
+                sel.setField(ShopCartItemFields.IS_SELECTED,false);
+                mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
+                mAdapter.setIcon();
+            }
+
         } else {
             //赋值位true
             isCheck = true;
             editTv.setText("编辑");
             selectTv.setVisibility(View.GONE);
             deleteTv.setVisibility(View.GONE);
+
+            final List<MultipleltemEntity> entities = mAdapter.getData();
+            for (MultipleltemEntity sel: entities) {
+                sel.setField(ShopCartItemFields.IS_SELECTED,false);
+                mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
+                mAdapter.setIcon();
+            }
 
         }
     }

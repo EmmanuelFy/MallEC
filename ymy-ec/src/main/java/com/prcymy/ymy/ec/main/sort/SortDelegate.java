@@ -8,6 +8,7 @@ import com.prcymy.ymy.delegates.bottom.BottomItemDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.main.sort.content.ContentDelegate;
 import com.prcymy.ymy.ec.main.sort.list.VerticalListDelegate;
+import com.prcymy.ymy.utils.StartBar;
 
 /**
  * Created by Administrator on 2017/8/5.

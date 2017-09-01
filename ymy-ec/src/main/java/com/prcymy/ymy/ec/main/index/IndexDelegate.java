@@ -16,6 +16,7 @@ import com.prcymy.ymy.ec.R2;
 import com.prcymy.ymy.ec.main.EcBottomDelegate;
 import com.prcymy.ymy.refresh.RefreshHandler;
 import com.prcymy.ymy.ui.recycler.BaseDecoration;
+import com.prcymy.ymy.utils.StartBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import butterknife.BindView;
@@ -49,6 +50,7 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+
         mRefreshHandler = RefreshHandler.create(srl_index,rv_index,new IndexDataConverter());
 
     }

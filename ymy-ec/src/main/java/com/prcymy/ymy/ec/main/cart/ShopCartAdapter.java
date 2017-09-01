@@ -34,9 +34,6 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
     protected ShopCartAdapter(List<MultipleltemEntity> data) {
         super(data);
 
-        //添加购物布局
-        addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
-
         //初始化总价
         for (MultipleltemEntity entity : data) {
 
@@ -48,10 +45,13 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 final double total = price * count;
 
                 mTotalPrice = mTotalPrice + total;
-                mICartItemListener.onItemClick(mTotalPrice);
             }
 
         }
+
+        //添加购物布局
+        addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
+
     }
 
 

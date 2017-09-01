@@ -104,7 +104,6 @@ public class SignInDelegate extends MallDelegate {
         super.onAttach(activity);
         if (activity instanceof ISignListener){
             mISignListener = (ISignListener) activity;
-
         }
     }
 

@@ -147,12 +147,12 @@ public class ShopCartDelegate extends BottomItemDelegate
             selectTv.setVisibility(View.VISIBLE);
             deleteTv.setVisibility(View.VISIBLE);
 
-            final List<MultipleltemEntity> entities = mAdapter.getData();
+           /* final List<MultipleltemEntity> entities = mAdapter.getData();
             for (MultipleltemEntity sel: entities) {
                 sel.setField(ShopCartItemFields.IS_SELECTED,false);
                 mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
                 mAdapter.setIcon();
-            }
+            }*/
 
         } else {
             //赋值位true
@@ -161,12 +161,12 @@ public class ShopCartDelegate extends BottomItemDelegate
             selectTv.setVisibility(View.GONE);
             deleteTv.setVisibility(View.GONE);
 
-            final List<MultipleltemEntity> entities = mAdapter.getData();
+            /*final List<MultipleltemEntity> entities = mAdapter.getData();
             for (MultipleltemEntity sel: entities) {
                 sel.setField(ShopCartItemFields.IS_SELECTED,false);
                 mIconSelectedAll.setTextColor(ContextCompat.getColor(Mall.getApplicationContext(), R.color.false_selected));
                 mAdapter.setIcon();
-            }
+            }*/
 
         }
     }
@@ -207,6 +207,7 @@ public class ShopCartDelegate extends BottomItemDelegate
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+
         mIconSelectedAll.setTag(0);
     }
 
@@ -230,8 +231,8 @@ public class ShopCartDelegate extends BottomItemDelegate
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
         mAdapter = new ShopCartAdapter(data);
-        mAdapter.setICartItemListener(this);
         recyclerView.setAdapter(mAdapter);
+        mAdapter.setICartItemListener(this);
         checkItemCount();
     }
 

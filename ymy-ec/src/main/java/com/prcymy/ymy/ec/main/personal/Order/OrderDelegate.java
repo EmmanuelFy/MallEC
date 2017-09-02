@@ -11,8 +11,12 @@ import android.view.View;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
+import com.prcymy.ymy.ec.main.personal.Order.allorder.AfterMarketDelegate;
 import com.prcymy.ymy.ec.main.personal.Order.allorder.AllOrderDelegate;
-import com.prcymy.ymy.ec.main.personal.Order.kek.FaHuo;
+import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitDeliverDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitEvaluateDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitPayDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitReceiveDelegate;
 import com.prcymy.ymy.ec.main.personal.PersonalDelegate;
 
 import java.util.ArrayList;
@@ -60,13 +64,19 @@ public class OrderDelegate extends MallDelegate {
 
     private void initView() {
 
-
-
         title.add("全部");
         title.add("待付款");
+        title.add("待发货");
+        title.add("待收货");
+        title.add("待评价");
+        title.add("售后");
 
         fragments.add(new AllOrderDelegate());
-        fragments.add(new FaHuo());
+        fragments.add(new WaitPayDelegate());
+        fragments.add(new WaitDeliverDelegate());
+        fragments.add(new WaitReceiveDelegate());
+        fragments.add(new WaitEvaluateDelegate());
+        fragments.add(new AfterMarketDelegate());
 
         pager.setAdapter(new FragmentAdapter(getChildFragmentManager(),title,fragments));
         tab.setupWithViewPager(pager);

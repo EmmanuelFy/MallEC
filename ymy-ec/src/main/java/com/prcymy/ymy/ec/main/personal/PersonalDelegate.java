@@ -34,6 +34,20 @@ public class PersonalDelegate extends BottomItemDelegate {
     //待付款
     public static final int WAIT_PAY = 1;
 
+    //待发货
+    public static final int WAIT_DELIVER = 2;
+
+    //待收货
+    public static final int WAIT_RECEVICE = 3;
+
+    //待评价
+    public static final int WAIT_EVALUATE = 4;
+
+    //售后
+    public static final int AFTER_MARKET = 5;
+
+    public static final String ORDER_TYPE = "ORDER_TYPE";
+
 
     @BindView(R2.id.rv_personal_setting)
     RecyclerView mRvSetting = null;
@@ -45,9 +59,34 @@ public class PersonalDelegate extends BottomItemDelegate {
         getParentDelegate().getSupportDelegate().start(new OrderDelegate(ALL_ORDER));
     }
 
-    @OnClick(R2.id.tv_fk)
-    void tv_fk(){
+    //待付款
+    @OnClick(R2.id.ll_pay)
+    void ll_pay(){
         getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_PAY));
+    }
+
+    //待发货
+    @OnClick(R2.id.ll_deliver)
+    void ll_deliver(){
+        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_DELIVER));
+    }
+
+    //待收货
+    @OnClick(R2.id.ll_receive)
+    void ll_receive(){
+        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_RECEVICE));
+    }
+
+    //待评价
+    @OnClick(R2.id.ll_evaluate)
+    void ll_evaluate(){
+        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_EVALUATE));
+    }
+
+    //售后
+    @OnClick(R2.id.ll_after_market)
+    void ll_after_market(){
+        getParentDelegate().getSupportDelegate().start(new OrderDelegate(AFTER_MARKET));
     }
 
     @Override

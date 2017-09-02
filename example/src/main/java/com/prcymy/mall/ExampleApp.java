@@ -17,9 +17,10 @@ public class ExampleApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-                                        //http://192.168.8.178:8080/RestServer/data/
+                                        //http://192.168.0.183/RestServer/data/
         Mall.init(this)
-                .withApiHost("http://192.168.8.178:8080/RestServer/data/")
+                .withApiHost("http://192.168.8.167/RestServer/data/")
+                .withIcon(new FontAwesomeModule())
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModel())
                 .withJavascriptInterface("mall")
@@ -29,3 +30,4 @@ public class ExampleApp extends Application {
         DataBaseManger.getInstance().init(this);
     }
 }
+

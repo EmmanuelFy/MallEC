@@ -37,7 +37,12 @@ public final class Mall {
         return getConfigurator().getConfigurtion(key);
     }
 
-    public static Context getApplicationContext() {
+   /* public static Context getApplicationContext() {
         return (Context) getConfigurations().get(ConfigType.APPLICATON_CONTEXT);
+    }*/
+
+
+    public static Context getApplicationContext() {
+        return getConfiguration(ConfigType.APPLICATON_CONTEXT);
     }
 }

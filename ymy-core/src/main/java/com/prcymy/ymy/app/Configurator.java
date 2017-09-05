@@ -1,7 +1,9 @@
 package com.prcymy.ymy.app;
 
+import android.app.Application;
 import android.support.annotation.NonNull;
 
+import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.prcymy.ymy.delegates.web.event.Event;
@@ -47,9 +49,10 @@ public class Configurator {
 
     //单例完成后 告诉配置文件  初始化完成
     public final void configure() {
+
         initIcons();
         MALL_CONFIGS.put(ConfigType.CONFIG_READY, true);
-
+        Utils.init((Application) Mall.getApplicationContext());
     }
 
     //返回配置信息 给mall调用

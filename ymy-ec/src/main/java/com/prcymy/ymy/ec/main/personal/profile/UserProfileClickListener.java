@@ -33,7 +33,7 @@ public class UserProfileClickListener extends SimpleClickListener {
         switch (id) {
             case 1:
                 //拍照或选择图片
-
+                DELEGATE.statCameraWithCheck();
                 break;
             case 2:
                 //姓名

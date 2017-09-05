@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.ui.camera.CameraImage;
 import com.prcymy.ymy.ui.camera.MallCamera;
 import com.prcymy.ymy.ui.camera.RequestCodes;
@@ -89,14 +90,15 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RESULT_OK){
+        Logger.d("dddddd");
+        if (resultCode == RESULT_OK){
             switch (requestCode){
                 case RequestCodes.TAKE_PHOTO:
                     final Uri resultUri = CameraImage.getInstance().getPath();
                     UCrop.of(resultUri, resultUri)
                             .withMaxResultSize(400, 400)
                             .start(getContext(), this);
+
 
                     break;
                 case RequestCodes.PICK_PHOTO:
@@ -107,6 +109,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                         UCrop.of(pickCropPath, Uri.parse(pickResult))
                                 .withMaxResultSize(400,400)
                                 .start(getContext(),this);
+
                     }
 
                     break;

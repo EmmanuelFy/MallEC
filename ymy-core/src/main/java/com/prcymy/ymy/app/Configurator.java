@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.delegates.web.event.Event;
 import com.prcymy.ymy.delegates.web.event.EventManager;
 
@@ -49,7 +51,7 @@ public class Configurator {
 
     //单例完成后 告诉配置文件  初始化完成
     public final void configure() {
-
+        Logger.addLogAdapter(new AndroidLogAdapter());
         initIcons();
         MALL_CONFIGS.put(ConfigType.CONFIG_READY, true);
         Utils.init((Application) Mall.getApplicationContext());

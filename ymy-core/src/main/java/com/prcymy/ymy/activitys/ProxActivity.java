@@ -22,6 +22,7 @@ public abstract class ProxActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initContatiner(savedInstanceState);
+
     }
 
     private void initContatiner(@Nullable Bundle savedInstanceState){

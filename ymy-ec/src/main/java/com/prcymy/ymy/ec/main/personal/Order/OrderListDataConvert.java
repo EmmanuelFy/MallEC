@@ -28,14 +28,15 @@ public class OrderListDataConvert extends DataConverter {
             final String title =data.getString("title");
             final int id = data.getInteger("id");
             final double price = data.getDouble("price");
+            final String time = data.getString("time");
 
             final MultipleltemEntity entity = MultipleltemEntity.builder()
                     .setItemType(OrderListItemType.ITEM_ORDER_LIST)
                     .setIField(MultipleFields.ID,id)
                     .setIField(MultipleFields.IMAGE_URL,thumb)
-                    .setIField(MultipleFields.TEXT,title)
+                    .setIField(MultipleFields.TITLE,title)
                     .setIField(OrderItemFields.PRICE,price)
-                    .setIField(OrderItemFields.TIME,title)
+                    .setIField(OrderItemFields.TIME,time)
                     .build();
 
             ENTITIES.add(entity);

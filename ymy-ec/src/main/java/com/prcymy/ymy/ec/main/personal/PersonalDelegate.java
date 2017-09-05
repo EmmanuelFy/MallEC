@@ -15,6 +15,7 @@ import com.prcymy.ymy.ec.main.personal.Order.OrderDelegate;
 import com.prcymy.ymy.ec.main.personal.list.ItemType;
 import com.prcymy.ymy.ec.main.personal.list.ListAdapter;
 import com.prcymy.ymy.ec.main.personal.list.ListBean;
+import com.prcymy.ymy.ec.main.personal.profile.UserProfileDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +90,10 @@ public class PersonalDelegate extends BottomItemDelegate {
         getParentDelegate().getSupportDelegate().start(new OrderDelegate(AFTER_MARKET));
     }
 
+    @OnClick(R2.id.img_user_avatar)
+    void onClickAvatar(){
+        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
+    }
     @Override
     public Object setLayout() {
         return R.layout.delegate_personal;
@@ -108,6 +113,7 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .setId(2)
                 .setText("系统设置")
                 .build();
+
 
         final List<ListBean> data = new ArrayList<>();
         data.add(address);

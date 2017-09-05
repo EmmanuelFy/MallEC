@@ -1,5 +1,8 @@
 package com.prcymy.ymy.ec.main.personal.list;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.prcymy.ymy.ec.R;
@@ -22,14 +25,19 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean,BaseViewHold
         super(data);
 
         addItemType(ItemType.ITEM_NORMAL, R.layout.arrow_item_layout);
+        addItemType(ItemType.ITEM_AVATAR,R.layout.arrow_item_avatar);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, ListBean item) {
         switch (helper.getItemViewType()){
-            case 20:
+            case ItemType.ITEM_NORMAL:
                 helper.setText(R.id.tv_arrow_text,item.getmText());
                 helper.setText(R.id.tv_arrow_value,item.getmValue());
+                break;
+            case ItemType.ITEM_AVATAR:
+                Glide.with(mContext).load(item.getmImageUrl()).into((ImageView) helper.getView(R.id.img_arrow_avatar));
+
                 break;
             default:
                 break;

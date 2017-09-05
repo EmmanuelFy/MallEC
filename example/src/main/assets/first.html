@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>测试界面</title>
+    <style type="text/css">
+        h1{
+            
+        }
+    </style>
+</head>
+<body>
+<h1>Android</h1>
+<h2>Android</h2>
+<h3>Android</h3>
+<h4>Android</h4>
+<h5>Android</h5>
+<h6>Android</h6>
+
+<button id="test">测试事件</button>
+
+<script type="text/javascript">
+    //noinspection JSUnusedLocalSymbols
+    function nativeCall() {
+        alert('原生调用');
+    }
+
+    document.getElementById('test').onclick = function () {
+        var command = {
+          'action':'test'
+        };
+
+        mall.event(JSON.stringify(command));
+    };
+</script>
+</body>
+</html>

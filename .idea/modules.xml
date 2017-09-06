@@ -3,18 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MallEC.iml" filepath="$PROJECT_DIR$/MallEC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MallEC.iml" filepath="$PROJECT_DIR$/MallEC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymy-annotations/ymy-annotations.iml" filepath="$PROJECT_DIR$/ymy-annotations/ymy-annotations.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ymy-annotations/ymy-annotations.iml" filepath="$PROJECT_DIR$/ymy-annotations/ymy-annotations.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ymy-compiler/ymy-compiler.iml" filepath="$PROJECT_DIR$/ymy-compiler/ymy-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymy-compiler/ymy-compiler.iml" filepath="$PROJECT_DIR$/ymy-compiler/ymy-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymy-core/ymy-core.iml" filepath="$PROJECT_DIR$/ymy-core/ymy-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ymy-core/ymy-core.iml" filepath="$PROJECT_DIR$/ymy-core/ymy-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymy-ec/ymy-ec.iml" filepath="$PROJECT_DIR$/ymy-ec/ymy-ec.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ymy-ec/ymy-ec.iml" filepath="$PROJECT_DIR$/ymy-ec/ymy-ec.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ymy-rtb/ymy-rtb.iml" filepath="$PROJECT_DIR$/ymy-rtb/ymy-rtb.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymy-rtb/ymy-rtb.iml" filepath="$PROJECT_DIR$/ymy-rtb/ymy-rtb.iml" />
     </modules>
   </component>

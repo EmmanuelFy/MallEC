@@ -12,6 +12,7 @@ import com.prcymy.ymy.delegates.bottom.BottomItemDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
 import com.prcymy.ymy.ec.main.personal.Order.OrderDelegate;
+import com.prcymy.ymy.ec.main.personal.address.AddressDelegate;
 import com.prcymy.ymy.ec.main.personal.list.ItemType;
 import com.prcymy.ymy.ec.main.personal.list.ListAdapter;
 import com.prcymy.ymy.ec.main.personal.list.ListBean;
@@ -106,6 +107,7 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .setItemTyoe(ItemType.ITEM_NORMAL)
                 .setId(1)
                 .setText("收货地址")
+                .setDelegate(new AddressDelegate())
                 .build();
 
         final ListBean system = new ListBean.Builder()
@@ -124,5 +126,6 @@ public class PersonalDelegate extends BottomItemDelegate {
         mRvSetting.setLayoutManager(manager);
         final ListAdapter adapter = new ListAdapter(data);
         mRvSetting.setAdapter(adapter);
+        mRvSetting.addOnItemTouchListener(new PersnoalOnClickListener(this));
     }
 }

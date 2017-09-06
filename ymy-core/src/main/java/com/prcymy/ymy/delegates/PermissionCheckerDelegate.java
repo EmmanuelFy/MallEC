@@ -2,14 +2,20 @@ package com.prcymy.ymy.delegates;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+import com.prcymy.ymy.R;
+import com.prcymy.ymy.app.Mall;
 import com.prcymy.ymy.ui.camera.CameraImage;
 import com.prcymy.ymy.ui.camera.MallCamera;
 import com.prcymy.ymy.ui.camera.RequestCodes;
@@ -17,6 +23,8 @@ import com.prcymy.ymy.utils.callback.CallbackManager;
 import com.prcymy.ymy.utils.callback.CallbackType;
 import com.prcymy.ymy.utils.callback.IGlobalCallback;
 import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.UCropActivity;
+import com.yalantis.ucrop.view.UCropView;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -25,12 +33,16 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
+import static com.yalantis.ucrop.UCrop.EXTRA_OUTPUT_CROP_ASPECT_RATIO;
+
 /**
  * Created by Administrator on 2017/7/29.
  */
 
 @RuntimePermissions
 public abstract class PermissionCheckerDelegate extends BaseDelegate {
+
+
 
     //不是直接点用方法
     @NeedsPermission(Manifest.permission.CAMERA)
@@ -90,15 +102,34 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Logger.d("dddddd");
+
+        //初始化裁剪框
+        UCrop.Options options = new UCrop.Options();
+        //设置为圆形
+        options.setCircleDimmedLayer(true);
+        //去除横线
+        options.setCropGridColumnCount(0);
+        //去除竖线
+        options.setCropGridRowCount(0);
+        //设置Toolbar颜色
+        options.setToolbarColor(Color.WHITE);
+        //设置Toolbar文字颜色
+        options.setToolbarWidgetColor(Color.BLACK);
+        //设置状态栏颜色
+        options.setStatusBarColor(Color.BLACK);
+        //隐藏底部
+        options.setHideBottomControls(true);
+        //隐藏裁剪边框线
+        options.setShowCropFrame(false);
+
         if (resultCode == RESULT_OK){
             switch (requestCode){
                 case RequestCodes.TAKE_PHOTO:
                     final Uri resultUri = CameraImage.getInstance().getPath();
                     UCrop.of(resultUri, resultUri)
+                            .withOptions(options)
                             .withMaxResultSize(400, 400)
                             .start(getContext(), this);
-
 
                     break;
                 case RequestCodes.PICK_PHOTO:
@@ -107,8 +138,10 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                         //从相册选择后存放裁剪后的图片
                         final String pickResult = MallCamera.createCropFile().getPath();
                         UCrop.of(pickCropPath, Uri.parse(pickResult))
+                                .withOptions(options)
                                 .withMaxResultSize(400,400)
                                 .start(getContext(),this);
+
 
                     }
 
@@ -123,7 +156,6 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     }
                     break;
                 case RequestCodes.CROP_ERROR:
-
                     Toast.makeText(_mActivity, "裁剪出错", Toast.LENGTH_SHORT).show();
                     break;
                 default:

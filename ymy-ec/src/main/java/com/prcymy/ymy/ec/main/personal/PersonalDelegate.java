@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.prcymy.ymy.ec.main.personal.list.ItemType;
 import com.prcymy.ymy.ec.main.personal.list.ListAdapter;
 import com.prcymy.ymy.ec.main.personal.list.ListBean;
 import com.prcymy.ymy.ec.main.personal.profile.UserProfileDelegate;
+import com.prcymy.ymy.ec.main.personal.settings.SettingsDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,16 +106,19 @@ public class PersonalDelegate extends BottomItemDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
 
         final ListBean address = new ListBean.Builder()
-                .setItemTyoe(ItemType.ITEM_NORMAL)
+                .setItemTyoe(ItemType.ITEM_BOTTOM)
                 .setId(1)
                 .setText("收货地址")
                 .setDelegate(new AddressDelegate())
+                .setImageUrl(R.mipmap.ic_launcher)
                 .build();
 
         final ListBean system = new ListBean.Builder()
-                .setItemTyoe(ItemType.ITEM_NORMAL)
+                .setItemTyoe(ItemType.ITEM_BOTTOM)
                 .setId(2)
                 .setText("系统设置")
+                .setDelegate(new SettingsDelegate())
+                .setImageUrl(R.mipmap.ic_launcher)
                 .build();
 
 
@@ -122,7 +127,7 @@ public class PersonalDelegate extends BottomItemDelegate {
         data.add(system);
 
         //设置Recyclerview
-        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        final GridLayoutManager manager = new GridLayoutManager(getContext(),4);
         mRvSetting.setLayoutManager(manager);
         final ListAdapter adapter = new ListAdapter(data);
         mRvSetting.setAdapter(adapter);

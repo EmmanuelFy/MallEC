@@ -83,9 +83,6 @@ public class UserProfileClickListener extends SimpleClickListener {
                             }
                         });
 
-
-
-
                 //拍照或选择图片
                 DELEGATE.statCameraWithCheck();
 

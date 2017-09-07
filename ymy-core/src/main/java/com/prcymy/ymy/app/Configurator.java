@@ -55,6 +55,7 @@ public class Configurator {
         initIcons();
         MALL_CONFIGS.put(ConfigType.CONFIG_READY, true);
         Utils.init((Application) Mall.getApplicationContext());
+        
     }
 
     //返回配置信息 给mall调用

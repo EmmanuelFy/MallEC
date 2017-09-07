@@ -39,7 +39,6 @@ public class UserProfileDelegate extends MallDelegate{
         final ListBean image = new ListBean.Builder()
                 .setItemTyoe(ItemType.ITEM_AVATAR)
                 .setId(1)
-                .setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504519226768&di=48b85911c447c72c4acd5881a1066a80&imgtype=0&src=http%3A%2F%2Fwww.bz55.com%2Fuploads%2Fallimg%2F120803%2F1-120P3102145.jpg")
                 .build();
 
         final ListBean name = new ListBean.Builder()

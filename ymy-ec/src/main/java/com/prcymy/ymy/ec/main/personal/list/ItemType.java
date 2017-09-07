@@ -7,4 +7,7 @@ package com.prcymy.ymy.ec.main.personal.list;
 public class ItemType {
      public static final int ITEM_NORMAL = 20;
      public static final int ITEM_AVATAR = 21;
+     public static final int ITEM_BOTTOM = 22;
+     public static final int ITEM_SWITCH = 23;
+
 }

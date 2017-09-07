@@ -12,6 +12,7 @@ import com.prcymy.ymy.ec.main.EcBottomDelegate;
 import com.prcymy.ymy.ec.sign.ISignListener;
 import com.prcymy.ymy.utils.StartBar;
 
+import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
 public class MainActivity extends ProxActivity implements
@@ -28,6 +29,18 @@ public class MainActivity extends ProxActivity implements
 
         StatusBarCompat.translucentStatusBar(this, true);
         StartBar.MIUISetStatusBarLightMode(this,true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
     }
 
     @Override

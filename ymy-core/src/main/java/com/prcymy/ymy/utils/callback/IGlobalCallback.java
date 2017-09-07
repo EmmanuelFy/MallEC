@@ -1,5 +1,7 @@
 package com.prcymy.ymy.utils.callback;
 
+import android.support.annotation.Nullable;
+
 /**
  * Created by Administrator on 2017/9/5.
  */
@@ -7,5 +9,5 @@ package com.prcymy.ymy.utils.callback;
 //全局回调
 public interface IGlobalCallback<T> {
 
-    void executeCallback(T args);
+    void executeCallback(@Nullable T args);
 }

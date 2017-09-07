@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">YmyEC</string>
+    <string name="delegate_about_text">\t\t优美雅商城是一个以消费全返为基础的电商平台，
+        将消费者与商家紧密联系，互惠互利实现商家和消费者与本平台三家的利益共赢。
+        我们的目标是致力于打造全国最高效、最专业的消费全返商城。</string>
 </resources>

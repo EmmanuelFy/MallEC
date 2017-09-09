@@ -16,4 +16,6 @@ public class ItemType {
 
     public static final int VERTICAL_MENU_LIST = 5;
 
+    public static final int RIGHT_MENU_LIST = 6;
+
 }

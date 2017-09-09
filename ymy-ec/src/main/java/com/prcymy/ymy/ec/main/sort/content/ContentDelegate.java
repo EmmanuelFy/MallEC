@@ -6,11 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
+import com.prcymy.ymy.ec.main.sort.SortDelegate;
 import com.prcymy.ymy.net.RestClient;
+import com.prcymy.ymy.net.callback.IError;
 import com.prcymy.ymy.net.callback.ISuccess;
+import com.prcymy.ymy.ui.recycler.MultipleltemEntity;
+import com.prcymy.ymy.utils.Http;
 
 import java.util.List;
 
@@ -58,15 +63,24 @@ public class ContentDelegate extends MallDelegate {
 
     private void intiData(){
         RestClient.builder()
-                .url("sort_content_data_1.json?contentId="+mContentId)
+                .url(Http.API_CATEGORY_INFO+"/"+mContentId)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        mData = new SectionDataConverter().converter(response);
+                        /*mData = new SectionDataConverter().converter(response);
                         final  SectionAdapter sectionAdapter
                                 = new SectionAdapter(R.layout.item_section_content,
-                                R.layout.item_section_header,mData);
-                        mRecyclerView.setAdapter(sectionAdapter);
+                                R.layout.item_section_header,mData);*/
+                        final List<MultipleltemEntity> data = new Section().setJsonData(response).convert();
+                        final SortDelegate delegate = getParentDelegate();
+                        final AdapterCC adapterCC = new AdapterCC(data,delegate);
+                        mRecyclerView.setAdapter(adapterCC);
+                    }
+                })
+                .error(new IError() {
+                    @Override
+                    public void onError(int code, String msg) {
+                        Logger.d("onError",msg);
                     }
                 })
                 .build()

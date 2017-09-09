@@ -16,14 +16,14 @@ public class SectionDataConverter {
     final List<SectionBean> converter(String json){
 
         final List<SectionBean> dataList = new ArrayList<>();
-        final JSONArray dataArray = JSON.parseObject(json).getJSONArray("data");
+       final JSONArray dataArray = JSON.parseObject(json).getJSONArray("data");
 
         final int size = dataArray.size();
 
         for (int i = 0; i < size; i++) {
             final JSONObject data = dataArray.getJSONObject(i);
-            final int id = data.getInteger("id");
-            final String title = data.getString("section");
+            final int id = data.getInteger("cat_id");
+            final String title = data.getString("cat_name");
 
             //添加title
             final SectionBean sectionBean = new SectionBean(true,title);

@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.blankj.utilcode.util.EncryptUtils;
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
@@ -25,6 +30,7 @@ public class SignInDelegate extends MallDelegate {
 
     @BindView(R2.id.edit_sign_in_name)
     TextInputEditText mName = null;
+
     @BindView(R2.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
 
@@ -35,27 +41,44 @@ public class SignInDelegate extends MallDelegate {
     void onClickSignIn() {
         if (checkForm()) {
             //登录操作
+
+            //密码加密
+            String p  = EncryptUtils.encryptMD5ToString(mPassword.getText().toString());
+
+            Logger.d(p);
+
             RestClient.builder()
-                    .url("")
-                    .params("","")
+                    .url("api/show")
+                    .params("mobile_phone",mName.getText().toString())
+                    .params("password",p)
                     .success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
+                            Logger.json(response);
+                            JSONObject jsonObject = JSON.parseObject(response);
+                            int code = jsonObject.getInteger("code");
+                            String desc = jsonObject.getString("Desc");
+                            if (code == 200){
+                                Toast.makeText(_mActivity, desc, Toast.LENGTH_SHORT).show();
+                            }
 
+                            if (code == 400){
+                                Toast.makeText(_mActivity, desc, Toast.LENGTH_SHORT).show();
+                            }
                             //调用解析 传入回调
-                           SignHandler.onSignIn(response,mISignListener);
+                           //SignHandler.onSignIn(response,mISignListener);
                         }
                     })
                     .fail(new IFail() {
                         @Override
                         public void onFail() {
-
+                            Toast.makeText(_mActivity, "onFail", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .error(new IError() {
                         @Override
                         public void onError(int code, String msg) {
-
+                            Toast.makeText(_mActivity, msg, Toast.LENGTH_SHORT).show();
                         }
                     })
                     .build()

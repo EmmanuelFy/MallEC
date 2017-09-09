@@ -1,5 +1,6 @@
 package com.prcymy.ymy.app;
 
+import android.app.Activity;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
@@ -80,6 +81,11 @@ public class Configurator {
 
     public final Configurator withIcon(IconFontDescriptor descriptor){
         ICONS.add(descriptor);
+        return this;
+    }
+
+    public final Configurator withActivity(Activity activity){
+        MALL_CONFIGS.put(ConfigType.ACTIVITY,activity);
         return this;
     }
 

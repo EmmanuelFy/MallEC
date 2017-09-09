@@ -6,13 +6,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
 import com.prcymy.ymy.ec.main.sort.SortDelegate;
 import com.prcymy.ymy.net.RestClient;
+import com.prcymy.ymy.net.callback.IError;
+import com.prcymy.ymy.net.callback.IFail;
 import com.prcymy.ymy.net.callback.ISuccess;
 import com.prcymy.ymy.ui.recycler.MultipleltemEntity;
+import com.prcymy.ymy.utils.Http;
 
 import java.util.List;
 
@@ -51,7 +55,7 @@ public class VerticalListDelegate extends MallDelegate{
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         RestClient.builder()
-                .url("sort_list_data.json")
+                .url(Http.API_CATEGORY)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -64,6 +68,19 @@ public class VerticalListDelegate extends MallDelegate{
                                  = new SortRecyclerAdapter(data,delegate);
 
                         mRecyclerView.setAdapter(adapter);
+                    }
+                })
+
+                .fail(new IFail() {
+                    @Override
+                    public void onFail() {
+                        Logger.d("onFail");
+                    }
+                })
+                .error(new IError() {
+                    @Override
+                    public void onError(int code, String msg) {
+                        Logger.d("onError",msg);
                     }
                 })
                 .build()

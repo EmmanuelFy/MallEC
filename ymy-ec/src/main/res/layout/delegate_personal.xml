@@ -34,10 +34,11 @@
                 android:layout_marginLeft="21dp"
                 android:layout_marginStart="21dp" />
 
-            <com.joanzapata.iconify.widget.IconTextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:text="{fa-comments-o}"
+            <TextView
+                android:id="@+id/tv_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/setting"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="30dp"/>

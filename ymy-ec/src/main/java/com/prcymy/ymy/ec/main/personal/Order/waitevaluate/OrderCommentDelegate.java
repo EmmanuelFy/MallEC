@@ -1,4 +1,4 @@
-package com.prcymy.ymy.ec.main.personal.Order.allorder;
+package com.prcymy.ymy.ec.main.personal.Order.waitevaluate;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,14 +8,15 @@ import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 
 /**
- * Created by Administrator on 2017/9/2.
- * 待评价
+ * Created by Administrator on 2017/9/8.
  */
 
-public class WaitEvaluateDelegate extends MallDelegate{
+public class OrderCommentDelegate extends MallDelegate {
+
+
     @Override
     public Object setLayout() {
-        return R.layout.delegate_waitevaluate;
+        return R.layout.delegate_order_comment;
     }
 
     @Override

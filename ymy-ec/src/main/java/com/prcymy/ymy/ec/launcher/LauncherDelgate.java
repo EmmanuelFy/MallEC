@@ -31,7 +31,7 @@ public class LauncherDelgate extends MallDelegate implements ITimerListener {
     @BindView(R2.id.tv_launcher_timer)
     AppCompatTextView mTvTimer = null;
 
-    private int mCount = 5;
+    private int mCount = 3;
     private Timer mTimer;
     private ILauncherListener mILauncherListener = null;
 
@@ -72,7 +72,6 @@ public class LauncherDelgate extends MallDelegate implements ITimerListener {
     private void checkShowScroll() {
         if (!MallPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
             start(new LanucherScrollDelegate(), SINGLETASK);
-
         } else {
             //检查用户是否登录
             AccountManager.checkAccount(new IUserChecker() {
@@ -92,6 +91,7 @@ public class LauncherDelgate extends MallDelegate implements ITimerListener {
             });
 
         }
+        pop();
     }
 
     @Override

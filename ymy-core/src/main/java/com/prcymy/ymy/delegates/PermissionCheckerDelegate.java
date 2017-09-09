@@ -141,8 +141,6 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                                 .withOptions(options)
                                 .withMaxResultSize(400,400)
                                 .start(getContext(),this);
-
-
                     }
 
                     break;

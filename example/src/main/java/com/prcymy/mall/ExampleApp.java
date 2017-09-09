@@ -26,7 +26,7 @@ public class ExampleApp extends Application {
         //http://192.168.8.167/RestServer/data/
         //http://www.ydmgx.com/
         Mall.init(this)
-                .withApiHost("http://192.168.8.167/RestServer/data/")
+                .withApiHost("http://www.ydmgx.com/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModel())

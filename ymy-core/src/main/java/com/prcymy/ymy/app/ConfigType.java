@@ -13,5 +13,6 @@ public enum ConfigType {
     ICON,
     HANDLER,
     JAVASCRIPT_INTERFACE,
-    WEB_HOST
+    WEB_HOST,
+    ACTIVITY
 }

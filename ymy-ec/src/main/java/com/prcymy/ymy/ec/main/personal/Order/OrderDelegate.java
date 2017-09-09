@@ -8,15 +8,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.prcymy.ymy.delegates.MallDelegate;
 import com.prcymy.ymy.ec.R;
 import com.prcymy.ymy.ec.R2;
-import com.prcymy.ymy.ec.main.personal.Order.allorder.AfterMarketDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.aftermarket.AfterMarketDelegate;
 import com.prcymy.ymy.ec.main.personal.Order.allorder.AllOrderDelegate;
-import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitDeliverDelegate;
-import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitEvaluateDelegate;
-import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitPayDelegate;
-import com.prcymy.ymy.ec.main.personal.Order.allorder.WaitReceiveDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.waitdeliver.WaitDeliverDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.waitevaluate.WaitEvaluateDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.waitpay.WaitPayDelegate;
+import com.prcymy.ymy.ec.main.personal.Order.waitreceiver.WaitReceiveDelegate;
 import com.prcymy.ymy.ec.main.personal.PersonalDelegate;
 
 import java.util.ArrayList;
@@ -36,12 +37,6 @@ public class OrderDelegate extends MallDelegate {
     private List<String> title = new ArrayList<>();
 
     private List<Fragment> fragments = new ArrayList<>();
-
-    private int position;
-
-    public OrderDelegate(int position) {
-        this.position = position;
-    }
 
     @BindView(R2.id.tool_bar)
     Toolbar toolbar = null;
@@ -63,6 +58,9 @@ public class OrderDelegate extends MallDelegate {
     }
 
     private void initView() {
+
+        int position = getArguments().getInt("position");
+        Logger.d(position);
 
         title.add("全部");
         title.add("待付款");

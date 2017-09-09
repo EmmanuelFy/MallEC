@@ -50,6 +50,8 @@ public class PersonalDelegate extends BottomItemDelegate {
     //售后
     public static final int AFTER_MARKET = 5;
 
+    private Bundle bundle = new Bundle();
+
     public static final String ORDER_TYPE = "ORDER_TYPE";
 
 
@@ -60,42 +62,49 @@ public class PersonalDelegate extends BottomItemDelegate {
     //全部订单
     @OnClick(R2.id.order_all)
     void orderAll(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(ALL_ORDER));
+        setOrderNum(ALL_ORDER);
     }
 
     //待付款
     @OnClick(R2.id.ll_pay)
     void ll_pay(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_PAY));
+        setOrderNum(WAIT_PAY);
     }
 
     //待发货
     @OnClick(R2.id.ll_deliver)
     void ll_deliver(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_DELIVER));
+        setOrderNum(WAIT_DELIVER);
     }
 
     //待收货
     @OnClick(R2.id.ll_receive)
     void ll_receive(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_RECEVICE));
+        setOrderNum(WAIT_RECEVICE);
     }
 
     //待评价
     @OnClick(R2.id.ll_evaluate)
     void ll_evaluate(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(WAIT_EVALUATE));
+        setOrderNum(WAIT_EVALUATE);
     }
 
     //售后
     @OnClick(R2.id.ll_after_market)
     void ll_after_market(){
-        getParentDelegate().getSupportDelegate().start(new OrderDelegate(AFTER_MARKET));
+
+        setOrderNum(AFTER_MARKET);
     }
 
+    //头像点击
     @OnClick(R2.id.img_user_avatar)
     void onClickAvatar(){
         getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
+    }
+
+    @OnClick(R2.id.tv_settings)
+    void onClickSettings(){
+        getParentDelegate().getSupportDelegate().start(new SettingsDelegate());
     }
     @Override
     public Object setLayout() {
@@ -113,18 +122,10 @@ public class PersonalDelegate extends BottomItemDelegate {
                 .setImageUrl(R.mipmap.ic_launcher)
                 .build();
 
-        final ListBean system = new ListBean.Builder()
-                .setItemTyoe(ItemType.ITEM_BOTTOM)
-                .setId(2)
-                .setText("系统设置")
-                .setDelegate(new SettingsDelegate())
-                .setImageUrl(R.mipmap.ic_launcher)
-                .build();
 
 
         final List<ListBean> data = new ArrayList<>();
         data.add(address);
-        data.add(system);
 
         //设置Recyclerview
         final GridLayoutManager manager = new GridLayoutManager(getContext(),4);
@@ -132,5 +133,13 @@ public class PersonalDelegate extends BottomItemDelegate {
         final ListAdapter adapter = new ListAdapter(data);
         mRvSetting.setAdapter(adapter);
         mRvSetting.addOnItemTouchListener(new PersnoalOnClickListener(this));
+    }
+
+    //跳转faragment
+    private void setOrderNum(int position){
+        OrderDelegate delegate = new OrderDelegate();
+        bundle.putInt("position",position);
+        delegate.setArguments(bundle);
+        getParentDelegate().getSupportDelegate().start(delegate);
     }
 }

@@ -1,4 +1,4 @@
-package com.prcymy.ymy.ec.main.personal.Order.allorder;
+package com.prcymy.ymy.ec.main.personal.Order.waitpay;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,20 +10,20 @@ import com.prcymy.ymy.ec.R;
 
 /**
  * Created by Administrator on 2017/9/2.
- * 待发货
+ * 待支付
  */
 
-public class WaitDeliverDelegate extends MallDelegate{
+public class WaitPayDelegate extends MallDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_waitdeliver;
+        return R.layout.delegate_waitpay;
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        Toast.makeText(_mActivity, "deliver", Toast.LENGTH_SHORT).show();
+        Toast.makeText(_mActivity, "pay", Toast.LENGTH_SHORT).show();
     }
 
     @Override
